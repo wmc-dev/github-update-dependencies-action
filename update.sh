@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # NPM PACKAGES
 echo "Update npm packages..."
 if npm outdated | grep @wmc-dev/; then
