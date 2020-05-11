@@ -1,5 +1,7 @@
 #!/bin/bash
 
+npm config set @wmc-dev:registry https://npm.pkg.github.com/
+
 # NPM PACKAGES
 echo "Update npm packages..."
 if npm outdated | grep @wmc-dev/; then
