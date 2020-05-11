@@ -9,6 +9,7 @@ fi
 npm set @wmc-dev:registry https://npm.pkg.github.com/
 npm set '//npm.pkg.github.com/:_authToken' "$token"
 
+echo "Install dependencies..."
 npm ci
 
 # NPM PACKAGES
@@ -18,6 +19,8 @@ if npm outdated | grep @wmc-dev/; then
   npm i $packages
   git add package.json package-lock.json
   PACKAGE_UPDATED="true"
+else 
+  echo "NPM packages are up to date"
 fi
 
 # SUBMODULES
@@ -37,6 +40,8 @@ if [ -f ./.gitmodules ]; then
       MODULE_UPDATED="true"
     fi
   done
+else
+  echo "Submodules are up to date"
 fi
 
 # CHECK IN CHANGES
@@ -45,4 +50,6 @@ if [[ $PACKAGE_UPDATED = "true" || $MODULE_UPDATED = "true" ]]; then
   git config --local user.name "Autoupdate Bot"
   git commit -m"Auto update dependencies"
   git push
+else
+  echo "Nothing to update"
 fi
