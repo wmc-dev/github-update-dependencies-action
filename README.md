@@ -2,5 +2,5 @@
 ## How to use
 ````
 - name: Update dependencies
-  uses: wmc-dev/github-update-dependencies-action@latest
+  uses: wmc-dev/github-update-dependencies-action@master
 ````
