@@ -3,4 +3,6 @@
 ````
 - name: Update dependencies
   uses: wmc-dev/github-update-dependencies-action@master
+  with:
+    token: ${{ secrets.WRITE_TOKEN }}
 ````
