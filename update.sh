@@ -1,6 +1,8 @@
 #!/bin/bash
+token=$1
 
 npm config set @wmc-dev:registry https://npm.pkg.github.com/
+npm config set '//npm.pkg.github.com/:_authToken' "$token"
 
 # NPM PACKAGES
 echo "Update npm packages..."

@@ -2,6 +2,13 @@ name: "Update wmc dependencies"
 description: "Updates wmc npm packages and submodules"
 author: "ZukenHammer"
 
+inputs:
+  token:
+    description: "Token to read the submodules and npm packages"
+    required: true
+
 runs:
   using: "docker"
   image: "Dockerfile"
+  args:
+    - ${{ inputs.token }}
