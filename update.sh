@@ -1,13 +1,15 @@
 #!/bin/bash
 set -e
-
 token=$1
 
 if [ ! $token ]; then
  echo "Token missing"
 fi
+
 npm set @wmc-dev:registry https://npm.pkg.github.com/
 npm set '//npm.pkg.github.com/:_authToken' "$token"
+
+npm ci
 
 # NPM PACKAGES
 echo "Update npm packages..."
