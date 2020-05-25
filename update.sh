@@ -14,9 +14,11 @@ npm ci
 
 # NPM PACKAGES
 echo "Update npm packages..."
-
+echo "Get outdated wmc-dev packages"
 outdated=$(npm outdated | grep "^@wmc-dev/")
-echo "Outdated: $outdated"
+
+echo "Outdated packages: $outdated"
+
 if [ ! -z "$outdated" ]; then
   echo "Packages found for update"
   packages=$(echo "$outdated" | sed -En 's~(^[^ ]*).*~\1~p' | awk '{print $1 "@latest"}')
