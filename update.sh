@@ -14,8 +14,10 @@ npm ci
 
 # NPM PACKAGES
 echo "Update npm packages..."
-if npm outdated | grep @wmc-dev/; then
-  packages=$(grep -o '@wmc-dev/[^"]*' ./package.json | awk '{ print $1 "@latest"}')
+
+outdated=$(npm outdated | grep "^@wmc-dev/")
+if [ ! -t "$outdated" ] then
+  packages=$(echo "$outdated" | sed -En 's~(^[^ ]*).*~\1~p' | awk '{print $1 "@latest"}')
   npm i $packages
   git add package.json package-lock.json
   PACKAGE_UPDATED="true"
