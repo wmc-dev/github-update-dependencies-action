@@ -17,6 +17,7 @@ echo "Update npm packages..."
 
 outdated=$(npm outdated | grep "^@wmc-dev/")
 if [ ! -z "$outdated" ]; then
+  echo "Packages found for update"
   packages=$(echo "$outdated" | sed -En 's~(^[^ ]*).*~\1~p' | awk '{print $1 "@latest"}')
   npm i $packages
   git add package.json package-lock.json
