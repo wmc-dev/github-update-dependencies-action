@@ -14,22 +14,16 @@ npm ci
 
 # NPM PACKAGES
 echo "Update npm packages..."
-echo "Get outdated packages"
-outdated=$(npm outdated)
-if [ ! -z "$outdated" ]; then
-  echo  "Outdated packages: $outdated"
-  wmcOutdated=$(grep "^@wmc-dev/" <<< "$outdated")
-  echo "Outdated wmc packages: $wmcOutdated"
-
-  if [ ! -z "$wmcOutdated" ]; then
-    echo "Packages found for update"
-    packages=$(echo "$wmcOutdated" | sed -En 's~(^[^ ]*).*~\1~p' | awk '{print $1 "@latest"}')
-    npm i $packages
-    git add package.json package-lock.json
-    PACKAGE_UPDATED="true"
-  else
-    echo "NPM packages are up to date"
-  fi
+echo "Get outdated packages..."
+if npm outdated | grep "^@wmc-dev/"; then
+  wmcOutdated=$(npm outdated | grep "^@wmc-dev/" | awk '{ print $1 "@latest"}')
+  echo "Packages found for update"
+  echo "$wmcOutdated"
+  echo "Install new packages..."
+  npm i $packages
+  git add package.json package-lock.json
+  PACKAGE_UPDATED="true"
+  echo "New packages installed"
 else 
   echo "NPM packages are up to date"
 fi
