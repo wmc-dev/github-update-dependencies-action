@@ -20,7 +20,7 @@ if npm outdated | grep "^@wmc-dev/"; then
   echo "Packages found for update"
   echo "$wmcOutdated"
   echo "Install new packages..."
-  npm i $packages
+  npm i $wmcOutdated
   git add package.json package-lock.json
   PACKAGE_UPDATED="true"
   echo "New packages installed"
