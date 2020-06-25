@@ -1,3 +1,3 @@
-FROM node:12
+FROM node:lts
 COPY update.sh /update.sh
 ENTRYPOINT ["/update.sh"]
