@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 token=$1
+customScript=$2
 
 if [ ! $token ]; then
  echo "Token missing"
@@ -47,6 +48,10 @@ if [ -f ./.gitmodules ]; then
   done
 else
   echo "Submodules are up to date"
+fi
+
+if [ ! $token ]; then
+  bash $customScript
 fi
 
 # CHECK IN CHANGES
