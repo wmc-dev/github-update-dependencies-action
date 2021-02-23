@@ -52,6 +52,7 @@ fi
 
 if [ ! -z "$customScript" ]; then
   echo "Run custom script: $customScript"
+  ls
   bash $customScript
 fi
 
