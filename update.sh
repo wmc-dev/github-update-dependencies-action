@@ -50,7 +50,7 @@ else
   echo "Submodules are up to date"
 fi
 
-if [ ! $token ]; then
+if [ ! $customScript ]; then
   bash $customScript
 fi
 
