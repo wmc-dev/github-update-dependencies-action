@@ -50,7 +50,8 @@ else
   echo "Submodules are up to date"
 fi
 
-if [ ! $customScript ]; then
+if [ ! -z "$customScript" ]; then
+  echo "Run custom script"
   bash $customScript
 fi
 
